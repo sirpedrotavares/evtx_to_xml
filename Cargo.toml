@@ -1,0 +1,19 @@
+[package]
+name = "evtx_to_xml"
+version = "1.0.0"
+authors = ["sirpedrotavares <ptavares@artresilia.com>"]
+edition = "2021"
+
+
+[dependencies]
+evtx = "0.7"
+rayon = "1.5"
+serde = { version = "1.0", features = ["derive"] }
+serde-xml-rs = "0.5"
+chrono = "0.4"
+clap = { version = "4.0", features = ["derive"] }
+num_cpus = "1.13"
+
+[[bin]]
+name = "evtx_to_xml"
+path = "src/main.rs"
