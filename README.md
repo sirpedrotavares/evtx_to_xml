@@ -1,6 +1,7 @@
 # evtx_to_xml
 
 A Rust-based tool for parsing and filtering Windows EVTX event logs. This tool processes both individual EVTX files and directories containing multiple EVTX files. It supports filtering logs by event IDs, date ranges, and specific target users.
+The XML output can be uploaded into LogonTracer: https://github.com/JPCERTCC/LogonTracer
 
 ## Features
 
@@ -11,9 +12,7 @@ A Rust-based tool for parsing and filtering Windows EVTX event logs. This tool p
   - Target usernames from a file
 - Multithreading support for fast log processing using Rayon.
 
-## Usage
-
-### Installation
+### Installation and Usage
 
 1. Clone the repository:
 
