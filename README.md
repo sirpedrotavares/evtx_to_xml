@@ -27,3 +27,16 @@ cd evtx_to_xml
 ```bash
 cargo build --release
 ```
+
+3. Running the Tool
+```bash
+./target/release/evtx_to_xml --input_path /path/to/evtx_or_directory --output_file output.xml [OPTIONS]
+```
+
+Options
+--input_path: Path to the .evtx file or directory to process.
+--output_file: Path to the output XML file.
+--users_file: Path to the file containing a list of owned users (optional).
+--start_date: Start date for filtering logs (format: YYYY-MM-DD) (optional).
+--end_date: End date for filtering logs (format: YYYY-MM-DD) (optional).
+--threads: Number of threads for multithreading (optional, default: system max).
