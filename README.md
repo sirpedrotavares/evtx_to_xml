@@ -20,3 +20,10 @@ A Rust-based tool for parsing and filtering Windows EVTX event logs. This tool p
 ```bash
 git clone https://github.com/yourusername/evtx_to_xml.git
 cd evtx_to_xml
+```
+
+2. Build the project
+
+```bash
+cargo build --release
+```
