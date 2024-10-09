@@ -75,6 +75,12 @@ fn main() -> Result<()> {
         .open(&args.output_file)?;
     let output_writer = Mutex::new(BufWriter::new(output_file));
 
+    // Escreva a linha XML apenas uma vez, no início do arquivo
+    {
+        let mut writer = output_writer.lock().unwrap();
+        writeln!(writer, "<?xml version=\"1.0\" encoding=\"utf-8\"?>").unwrap();
+    }
+
     // Check if the input path is a directory or a file
     let input_path = Path::new(&args.input_path);
     if input_path.is_dir() {
@@ -111,7 +117,12 @@ fn process_evtx_file(evtx_file: &str, owned_users: &[String], start_date: Option
             match record {
                 Ok(record) => {
                     // Get the XML data from the record
-                    let xml_output = record.data.clone();  // Clone the entire XML
+                    let mut xml_output = record.data.clone();  // Clone the entire XML
+
+                    // Remove the XML declaration from the event data if present
+                    if xml_output.contains("<?xml version=\"1.0\" encoding=\"utf-8\"?>") {
+                        xml_output = xml_output.replace("<?xml version=\"1.0\" encoding=\"utf-8\"?>", "").trim().to_string();
+                    }
 
                     // Only process the record if its EventID matches one of the ones we care about
                     if let Some(event_id) = get_event_id_from_xml(&xml_output) {
@@ -261,4 +272,3 @@ fn load_owned_users(file_path: &str) -> Vec<String> {
         .map(|line| line.expect("Could not read line"))
         .collect()
 }
-
