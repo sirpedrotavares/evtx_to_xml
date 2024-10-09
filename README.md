@@ -33,10 +33,27 @@ cargo build --release
 ./target/release/evtx_to_xml --input_path /path/to/evtx_or_directory --output_file output.xml [OPTIONS]
 ```
 
-Options
---input_path: Path to the .evtx file or directory to process.
---output_file: Path to the output XML file.
---users_file: Path to the file containing a list of owned users (optional).
---start_date: Start date for filtering logs (format: YYYY-MM-DD) (optional).
---end_date: End date for filtering logs (format: YYYY-MM-DD) (optional).
---threads: Number of threads for multithreading (optional, default: system max).
+### Options
+
+- `--input_path`: Path to the `.evtx` file or directory to process.
+- `--output_file`: Path to the output XML file.
+- `--users_file`: Path to the file containing a list of owned users (optional).
+- `--start_date`: Start date for filtering logs (format: `YYYY-MM-DD`) (optional).
+- `--end_date`: End date for filtering logs (format: `YYYY-MM-DD`) (optional).
+- `--threads`: Number of threads for multithreading (optional, default: system max).
+
+4. Execution output
+
+```bash
+./evtx_to_xml --input-path evtx_folder/ --output-file output.xml -u owned_users.txt --start-date 2024-03-18 --end-date 2024-08-26
+
+Loading owned users from: owned_users.txt
+Writing matched events to output file: output.xml
+Processing EVTX file: security_evtx/1-Security.evtx
+Processing EVTX file: security_evtx/2-Security.evtx
+Processing EVTX file: security_evtx/3-Security.evtx
+Processing EVTX file: security_evtx/4-Security.evtx
+Processing EVTX file: security_evtx/5-Security.evtx
+Processing EVTX file: security_evtx/6-Security.evtx
+(..)
+```
