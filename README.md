@@ -56,3 +56,8 @@ Processing EVTX file: security_evtx/5-Security.evtx
 Processing EVTX file: security_evtx/6-Security.evtx
 (..)
 ```
+
+5. See how to import the XML into LogonTracer here:
+```bash
+https://gitbook.seguranca-informatica.pt/resources-1/windows-eventviewer-analysis-or-dfir#import-the-xml-into-logontracer
+```
